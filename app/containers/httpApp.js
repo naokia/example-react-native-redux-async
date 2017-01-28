@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import Http from '../components/http';
 import * as httpActions from '../actions/httpActions';
 import { connect } from 'react-redux';
+import { ActivityIndicator, StyleSheet } from 'react-native';
 
 class HttpApp extends React.Component{
     constructor(props){
@@ -13,14 +14,31 @@ class HttpApp extends React.Component{
 
     render(){
         const { state, actions } = this.props;
-        return (
-            <Http
-                ipAddress={state.ipAddress}
-                {...actions} />
-        );
+        if(state.isFetching){
+            return (
+                <ActivityIndicator
+                    animating={true}
+                    style={[styles.centering, {height: 80}]}
+                    size="large"
+                />
+            )
+        } else {
+            return (
+                <Http
+                    ipAddress={state.ipAddress}
+                    {...actions} />
+            );
+        }
     }
 }
 
+const styles = StyleSheet.create({
+    centering: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 8,
+    }
+});
 export default connect(state => ({
     state: state.default.http
 }), (dispatch) => ({
