@@ -16,7 +16,7 @@ export default class Http extends React.Component{
     }
 
     render(){
-        const { ipAddress, request, isFetching } = this.props;
+        const { text, request, isFetching } = this.props;
         if(isFetching){
             return (
                 <View style={styles.container}>
@@ -30,7 +30,7 @@ export default class Http extends React.Component{
         } else {
             return (
                 <View style={styles.container}>
-                    <Text>{ipAddress}</Text>
+                    <Text>{text}</Text>
                     <TouchableHighlight onPress={request}>
                         <Text>Call API</Text>
                     </TouchableHighlight>

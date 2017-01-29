@@ -5,7 +5,8 @@ export function request() {
         dispatch(requesting());
         return fetch('https://httpbin.org/ip')
             .then(response => response.json())
-            .then(json => dispatch(receive(json)));
+            .then(json => dispatch(receive(json)))
+            .catch(error => dispatch(failure(error)));
     };
 }
 
@@ -29,8 +30,9 @@ export function success() {
     };
 }
 
-export function failure() {
+export function failure(error) {
     return {
-        type: types.HTTP_FAILURE
+        type: types.HTTP_FAILURE,
+        error: error.message
     };
 }

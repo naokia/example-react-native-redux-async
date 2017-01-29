@@ -15,7 +15,7 @@ class HttpApp extends React.Component{
         const { state, actions } = this.props;
         return (
             <Http
-                ipAddress={state.ipAddress}
+                text={state.text}
                 isFetching={state.isFetching}
                 {...actions} />
         );

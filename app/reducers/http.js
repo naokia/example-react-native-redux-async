@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes'
 
 const initialState = {
-    ipAddress: "",
+    text: "",
     isFetching: false
 };
 
@@ -17,7 +17,12 @@ export default function http(state = initialState, action = {}) {
             });
         case types.HTTP_SUCCESS:
             return Object.assign({}, state, {
-                ipAddress: action.ipAddress,
+                text: action.ipAddress,
+                isFetching: false
+            });
+        case types.HTTP_FAILURE:
+            return Object.assign({}, state, {
+                text: action.error,
                 isFetching: false
             });
         default:
