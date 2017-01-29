@@ -1,7 +1,8 @@
 import * as types from '../actions/actionTypes'
 
 const initialState = {
-    ipAddress: ""
+    ipAddress: "",
+    isFetching: false
 };
 
 export default function http(state = initialState, action = {}) {
