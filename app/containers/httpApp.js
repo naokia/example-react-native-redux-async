@@ -16,7 +16,7 @@ class HttpApp extends React.Component{
         return (
             <Http
                 text={state.text}
-                isFetching={state.isFetching}
+                isRequesting={state.isRequesting}
                 {...actions} />
         );
     }

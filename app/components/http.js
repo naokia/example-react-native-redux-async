@@ -16,14 +16,14 @@ export default class Http extends React.Component{
     }
 
     render(){
-        const { text, request, isFetching } = this.props;
-        if(isFetching){
+        const { text, request, isRequesting } = this.props;
+        if(isRequesting){
             return (
                 <View style={styles.container}>
                     <ActivityIndicator
                         animating={true}
                         style={[{height: 80}]}
-                        size="large"
+                        size='large'
                     />
                 </View>
             )
